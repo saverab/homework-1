@@ -25,7 +25,7 @@ var pages = {
       "Welcome aboard the Ship! Please make your way to your seat. What's the number?",
     leftLabel: "12E",
     rightLabel: "97C",
-  }
+  },
 };
 
 class App extends Component {
