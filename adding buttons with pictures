@@ -1,0 +1,71 @@
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+
+import "./styles.css";
+
+var pages = {
+  start: {
+    text:
+      "Welcome, traveler! How would you like to get to your destination?",
+    leftLabel: "Ship",
+    rightLabel: "Plane",
+    
+    leftPage: "ontheship",
+    rightPage: "ontheplane",
+    
+    img:
+    "https://media.istockphoto.com/photos/chairs-and-umbrella-in-coral-beach-tropical-resort-banner-picture-id638885650?k=6&m=638885650&s=612x612&w=0&h=G_beQabWMqEREFcx4sbdxsC6DmpourRqAShk0dmXqhI="
+  },
+  ontheship: {
+    text:
+      "Welcome aboard the ship! Please make your way to your seat. What's the number?",
+    leftLabel: "2B",
+    rightLabel: "2C",
+    
+    leftPage: "death",
+    rightPage: "life"
+    img:
+    "https://www.belitiketbas.com/wp-content/uploads/2016/08/ETS-ticket-online-select-more-seats.png"
+  },
+  ontheplane: {
+    text:
+      "Welcome aboard the Plane! Please make your way to your seat. What is your boarding group?",
+    leftLabel: "A",
+    rightLabel: "B",
+    img:
+    "https://images2.minutemediacdn.com/image/upload/c_fill,g_auto,h_1248,w_2220/f_auto,q_auto,w_1100/v1555355226/shape/mentalfloss/boarding_hed.jpg"
+  },
+};
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      page: "start"
+    };
+  }
+
+  goToPage(pageName) {
+    this.setState({
+      page: pageName
+    });
+  }
+
+  render() {
+    var pageData = pages[this.state.page];
+    
+    return (
+      <div className="App">
+      <img class= "img" src={pageData.img} height= "400" />
+        <p>{pageData.text}</p>
+        <button onClick={() => this.goToPage(pageData.leftPage)}>{pageData.leftLabel}</button>
+        <button onClick={() => this.goToPage(pageData.rightPage)}>{pageData.rightLabel}</button>
+
+      </div>
+    );
+  }
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
